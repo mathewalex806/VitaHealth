@@ -22,10 +22,10 @@ import json
 
 torch.hub._validate_not_a_forked_repo=lambda a,b,c: True
 model  = torch.hub.load('ultralytics/yolov5','custom', path='best.pt',force_reload=False)
-
-llm=OpenAI(model_name="text-davinci-003", openai_api_key = "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")
-
 load_dotenv(find_dotenv())
+llm=OpenAI(model_name="text-davinci-003", openai_api_key =os.getenv("OPENAI_API_KEY"))
+
+
 
 
 def give_recipe(food):
@@ -38,7 +38,16 @@ You are an world renowned chef . Give the recipe for a simple but tasty {food} "
     x= llm(prompt.format(food=food))
     
     return x
-
+def give_diet(total_cal,cal_now):
+    template="""
+You are an world renowned dietitian . I have a daily calory limit of of """ +total_cal+""" but i already ate {calory} calories . recommend a diet for rest of the day along with their calories """
+    prompt2 =PromptTemplate(
+    input_variables=["calory"],
+    template=template,
+    )
+    x= llm(prompt2.format(calory=cal_now))
+    
+    return x
 def image_converter(imgs):
     result=model(imgs)
     lst=[]
@@ -149,3 +158,11 @@ def recipe(request):
     else:
         return render (request, "app1/recipe.html")
 
+
+def diet(request):
+    if request.method == "POST":
+        recipe_user = request.POST["recipe_input"]
+        recipe_ai = give_recipe(recipe_user)
+        return render (request, "app1/recipe.html", {"a":recipe_ai})
+    else:
+        return render (request, "app1/recipe.html")
