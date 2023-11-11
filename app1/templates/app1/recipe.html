@@ -1,0 +1,30 @@
+{%extends 'app1/layout.html'%}
+{%load static%}
+
+{%block body%}
+
+{%if user.is_authenticated%}
+<h1>Recipe Page</h1>
+
+<form action="{%url 'recipe'%}" method="post">
+    {%csrf_token%}
+    <input type="text" name="recipe_input" placeholder="Enter Recipe">
+    <button type="submit"></button>
+</form>
+
+<h1>Result</h1>
+{%if a %}
+<p>{{a}}</p>
+{%endif%}
+
+{%else%}
+
+<h1>Log in to use this feature</h1>
+
+{%endif%}
+
+{%endblock%}
+
+{%block script%}
+<script src="{%static 'app1/javascript.js'%}"></script>
+{%endblock%}

@@ -5,13 +5,33 @@ from django.contrib.auth import authenticate, login, logout
 from .models import *
 from django.db import IntegrityError
 from .forms import *
-# Create your views here.
+from dotenv import load_dotenv,find_dotenv
+from langchain.llms import OpenAI
+from langchain.chat_models import ChatOpenAI
+from langchain import PromptTemplate
+import openai
+import os
 
+
+
+llm=OpenAI(model_name="text-davinci-003", openai_api_key = "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")
+
+load_dotenv(find_dotenv())
+
+
+def give_recipe(food):
+    template="""
+You are an world renowned chef . Give the recipe for a simple but tasty {food} """
+    prompt =PromptTemplate(
+    input_variables=["food"],
+    template=template,
+    )
+    x= llm(prompt.format(food=food))
+    
+    return x
 
 def  index(request):
     return render(request, 'app1/index.html')
-
-
 
 
 def login_view(request):
@@ -84,3 +104,13 @@ def result(request):
 def camera(request):
     
     return render (request, "app1/camera.html")
+
+def recipe(request):
+    
+    if request.method == "POST":
+        recipe_user = request.POST["recipe_input"]
+        recipe_ai = give_recipe(recipe_user)
+        return render (request, "app1/recipe.html", {"a":recipe_ai})
+    else:
+        return render (request, "app1/recipe.html")
+
