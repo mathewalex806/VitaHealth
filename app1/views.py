@@ -11,8 +11,14 @@ from langchain.chat_models import ChatOpenAI
 from langchain import PromptTemplate
 import openai
 import os
+import torch
+import numpy
+import uuid
+import time
+from PIL import Image as impill
 
-
+torch.hub._validate_not_a_forked_repo=lambda a,b,c: True
+model  = torch.hub.load('ultralytics/yolov5','custom', path='best.pt',force_reload=False)
 
 llm=OpenAI(model_name="text-davinci-003", openai_api_key = "sk-yHOgiFsMAUPoGdqA7yoNT3BlbkFJbANcXH0F9zcDsI")
 
@@ -28,6 +34,15 @@ You are an world renowned chef . Give the recipe for a simple but tasty {food} "
     )
     x= llm(prompt.format(food=food))
     
+    return x
+
+def image_converter(imgs):
+    result=model(imgs)
+    result=result.render()[0]
+    im = impill.fromarray(result)
+    x=str(uuid.uuid4())+".jpg"
+    y="media/"+x
+    im.save(y)
     return x
 
 def  index(request):
@@ -96,10 +111,11 @@ def image(request):
 def result(request):
     if request.method == "POST":
         img_path = request.POST["img_path"]
-
-        # Philip's function over here
-
-       ## return render (request, "app1/result.html", {"result": })
+        img_path="media/"+img_path
+        print(img_path)
+        img_return = image_converter(img_path)
+        
+        return render (request, "app1/result.html", {"result": img_return})
     else:
         return render (request , "app1/result.html", {"message": "Invalid Access"})
     

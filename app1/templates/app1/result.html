@@ -6,15 +6,18 @@
 {%block body%}
 {%if message%}
 <h1>{{message}}</h1>
+{%endif%}
 
 {%if user.is_authenticated%}
 
-
-
+{%if result%}
+<h1>Result Page</h1>
+<img src="{{result}}" alt="">
 
 
 {%else%}
 <h1>Log in to access this feature</h1>
+{%endif%}
 {%endif%}
 
 {%endblock%}
