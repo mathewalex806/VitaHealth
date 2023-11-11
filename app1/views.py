@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from .models import *
 from django.db import IntegrityError
+from .forms import *
 # Create your views here.
 
 
@@ -54,3 +55,18 @@ def signup(request):
         
     else:
         return render (request, "app1/signup.html")
+    
+def image(request):
+    if request.method == "POST":
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            a = Image.objects.last()
+            return render (request, "app1/image_upload.html", {'a' : a})
+        else:
+            form = ImageForm()
+            return render (request, 'app1/image_upload.html', {'form': form})
+    return render (request, "app1/image_upload.html",  {'form': ImageForm()})
+
+
+
