@@ -1,0 +1,27 @@
+{%extends 'app1/layout.html'%}
+{%load static%}
+
+
+
+{%block body%}
+{%if message%}
+<h1>{{message}}</h1>
+
+{%if user.is_authenticated%}
+
+
+
+
+
+{%else%}
+<h1>Log in to access this feature</h1>
+{%endif%}
+
+{%endblock%}
+
+
+
+
+{%block script%}
+<script src="{%static 'app1/javascript.js'%}"></script>
+{%endblock%}

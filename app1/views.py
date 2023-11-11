@@ -70,3 +70,12 @@ def image(request):
 
 
 
+def result(request):
+    if request.method == "POST":
+        img_path = request.POST["img_path"]
+
+        # Philip's function over here
+
+       ## return render (request, "app1/result.html", {"result": })
+    else:
+        return render (request , "app1/result.html", {"message": "Invalid Access"})

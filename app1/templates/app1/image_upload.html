@@ -18,7 +18,10 @@
         {{ form.as_p }}
         <button type="submit">Upload</button>
     </form>
-    <form action=""></form>
+    <form action="{%url 'result'%}" method="post">
+        {%csrf_token%}
+        <input type="hidden" value = {{a.user_img}} name = "img_path">
+    </form>
 
 
 {%else%}
