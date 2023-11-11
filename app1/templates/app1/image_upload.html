@@ -6,33 +6,40 @@
 {%block body%}
 
 {% if user.is_authenticated%}
-    <h1>Image upload Page</h1>
 
-{%if a %}
-<img src="{{a.user_img}}" alt="">
-{%endif%}
-
-
-    <form method = "post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Preview</button>
-    </form>
-    <form action="{% url 'result'%}" method="post">
-        {%csrf_token%}
-        <input type="hidden" value = {{a.user_img}} name = "img_path">
-        <button type="submit">Upload</button>
-    </form>
+    <div class="uplimg">
+        <div class="innercl">
+            <h1>Image upload Page</h1>
+            {%if a %}
 
 
-{%else%}
-<h1>Log in to use this feature!!</h1>
-{%endif%}
-
-
-
-
-{%endblock%}
+            <img src="{{a.user_img}}" width="500px" height="auto">
+            {%endif%}
+            
+            
+            <div class="imgform">
+                <form method = "post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+            
+                    <button type="submit">Preview</button>
+                </form>
+                <form action="{% url 'result'%}" method="post">
+                    {%csrf_token%}
+            
+                    <input type="hidden" value = {{a.user_img}} name = "img_path">
+                    <button type="submit">Upload</button>
+                </form>
+            </div>
+                
+            
+            
+            {%else%}
+            <h1>Log in to use this feature!!</h1>
+            {%endif%}
+        </div>
+        </div>
+        {%endblock%}
 
 
 
@@ -40,3 +47,5 @@
 {%block script%}
 <script src="{%static 'app1/javascript.js'%}"></script>
 {%endblock%}
+
+ 

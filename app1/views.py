@@ -16,11 +16,14 @@ import numpy
 import uuid
 import time
 from PIL import Image as impill
+from collections import Counter
+import requests
+import json
 
 torch.hub._validate_not_a_forked_repo=lambda a,b,c: True
 model  = torch.hub.load('ultralytics/yolov5','custom', path='best.pt',force_reload=False)
 
-llm=OpenAI(model_name="text-davinci-003", openai_api_key = "sk-yHOgiFsMAUPoGdqA7yoNT3BlbkFJbANcXH0F9zcDsI")
+llm=OpenAI(model_name="text-davinci-003", openai_api_key = "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")
 
 load_dotenv(find_dotenv())
 
@@ -38,12 +41,16 @@ You are an world renowned chef . Give the recipe for a simple but tasty {food} "
 
 def image_converter(imgs):
     result=model(imgs)
+    lst=[]
+    z=Counter(result.pandas().xyxy[0]["name"])
+    for zz in z: 
+       lst.append([zz, z[zz]])
     result=result.render()[0]
     im = impill.fromarray(result)
     x=str(uuid.uuid4())+".jpg"
     y="media/"+x
     im.save(y)
-    return x
+    return x,lst
 
 def  index(request):
     return render(request, 'app1/index.html')
@@ -113,11 +120,21 @@ def result(request):
         img_path = request.POST["img_path"]
         img_path="media/"+img_path
         print(img_path)
-        img_return = image_converter(img_path)
+        x=image_converter(img_path)
+        img_return = x[0]
+        query = str(x[1][0][1])+" "+str(x[1][0][0])
+        print(query)
+        api_url = 'https://api.api-ninjas.com/v1/nutrition?query={}'.format(query)
+        resp= requests.get(api_url, headers={'X-Api-Key': 'jUxgOQ6Uyyv3X7+hMthrnQ==HroM4odQgevPwzgg'})
+        response=resp.json()
+        if resp.status_code == requests.codes.ok:
+            return render (request, "app1/result.html", {"result": img_return,"cal":response[0]["calories"],"fat":response[0]["fat_total_g"], "serve":response[0]["serving_size_g"],"fat_sat":response[0]["fat_saturated_g"], "protein":response[0]["protein_g"], "sodium":response[0]["sodium_mg"],"pottas":response[0]["potassium_mg"],"chole":response[0]["cholesterol_mg"],"carbs":response[0]["carbohydrates_total_g"],"fibre":response[0]["fiber_g"],"sugar":response[0]["sugar_g"]})
+        else:
+            return render (request , "app1/result.html", {"message": "Invalid Access"})
+            
         
-        return render (request, "app1/result.html", {"result": img_return})
-    else:
-        return render (request , "app1/result.html", {"message": "Invalid Access"})
+        
+        
     
 def camera(request):
     

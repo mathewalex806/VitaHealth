@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+HK&family=Paytone+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap');
 
-
 body{
     background-image: linear-gradient(to bottom,rgba(28,55,84), rgb(0,20,41));
     height: 100vh;
@@ -55,7 +54,7 @@ form{
 }
 
 input{
-    width: 90%;
+    width: 100%;
     padding: 0.7rem 2rem;
     background-color: #f3f3f3;
     border: none;
@@ -86,7 +85,7 @@ form{
 }
 
 input:focus ~ label{
-    width: 80%;
+    width: 90%;
 }
 
 label{
@@ -144,7 +143,7 @@ label{
 
 #callim{
     font-size: 15px;
-    margin-left: 15px;
+
 }
 
 .preference{
@@ -187,19 +186,7 @@ label{
 }
 
 
-#drop-down li{
-    list-style: none;
-    height: 100%;
-    padding: 0.3rem 0.5rem;
-    cursor: pointer;
-    transition: 0.5s ease-in-out;
-    border-radius: 6px;
-}
 
-#drop-down li:hover{
-    color: #000;
-    background-color: rgba(0, 0, 0, 0.37);
-}
 
 .dropdownbtn:hover{
     background-color: rgba(0, 0, 0, 0.904);
@@ -207,7 +194,8 @@ label{
 
 #allergy{
     font-size: 15px;
-    margin: 20px;
+    margin-top: 15px;
+
 }
 
 .allergies{
@@ -215,16 +203,10 @@ label{
     gap: 1.5rem;
 }
 
-.radio{
-    font-size: 20px;
-    font-weight: 400;
-    display: inline-block;
-    vertical-align: middle;
+.allergies input{
+    width: 100%;
 }
 
-.radio input[type="radio"]{
-    display: none;
-}
 
 
 #signupbutton{
@@ -234,7 +216,8 @@ label{
     background-color: rgb(70, 58, 82);
     color: #fff;
     height: 40px;
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .ver{
@@ -247,29 +230,472 @@ label{
     height: 100vh;
     width: 100vw;
     background-color: #191822;
+    display: flex;
+    flex-direction: row;
+    overflow-x: hidden;
 }
 
 .nav{
     height: 100vh;
-    width: 6vw;
+    width: 5.2em;
     background-color: #13121C;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 5rem;
+    border-radius: 0 40px 40px 0px;
+
 }
 
-.nav a{
+
+
+.nav svg{
     cursor: pointer;
 }
 
+.cam{
+    width: 4.5em;
+    height: 4.5em;
+    display: flex;
+    background-color: #fff;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+#cam{
+    z-index: 2;
+}
+
+#welcome{
+    color: #fff;
+    font-family: 'Noto Sans HK', sans-serif;
+    top: 5px;
+    font-weight: 200;
+    left: 50px;
+    position: relative;
+    font-size: 1.8vw;
+    margin-bottom: -5px;
+    margin-top: 30px;
+}
+
+.dashcontainer1{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 50%;
+}
+
+.calgoal span{
+    margin-bottom: 20px;
+}
+
+.calgoal{
+    background-color: #1E2129;
+    width: 80%;
+    height: 40%;
+    position: relative;
+    margin: 20px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 5px #0202029f;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+
+.sbody{
+    background-image: linear-gradient(rrgba(0, 20, 41, 1),rgba(28, 55, 84, 0.86));
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+}
+
+.navbar{
+    display: inline-flex;
+    color: #fff;
+    top: 0;
+    justify-content: space-between;
+    width: 98%;
+    height: 60px;
+    align-items: center;
+}
+
+#titlecard{
+    font-family: 'Marcellus SC', serif;
+    margin-left: 20px;
+}
+
+.navitems{
+    display: inline-flex;
+    justify-content: space-between;
+    padding: 0;
+    gap: 20vw;
+    font-size: 20px;
+}
+
+.navitems li{
+    list-style: none;
+    margin-top: 10px;
+}
+
+#getstarted{
+    height: 40px;
+    width: 120px;
+    border-radius: 40px;
+    border-style: none;
+}
+
+.goalratio h1{
+    font-size: 5.4rem;
+    color: #fff;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.goalratio h2{
+    color: #fff;
+    font-family: 'Noto Sans HK', sans-serif;
+    margin: 0;
+    font-size: 1.4rem;
+    text-align: center;
+
+}
+
+.goalratio span{
+    font-size: 3.6rem;
+}
+
+.calgoaltext{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 80%;
+    color: #fff;
+    font-family: 'Noto Sans HK', sans-serif;
+    font-size: 0.7rem;
+    height: 100%;
+}
+
+.imgclass{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.imgclass h2{
+    font-size: 30px;
+}
+
+#calories{
+    font-size: 40px;
+}
+
+.uplimg{
+    background-color: #191822;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+.innercl{
+    background-color: #1E2129;
+    width: 90vw;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 40px;
+}
+
+.innercl h1{
+    color: #fff;
+}
+
+.imgform{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin: 20px;
+}
+
+.imgform button{
+    width: 100px;
+    height: 40px;
+    border-radius: 30px;
+    border-style: none;
+    background-color: rgb(72, 173, 240);
+    transition: 0.3s ease-in-out;
+}
+.uplimg button:hover{
+    background-color: rgb(27, 73, 104);
+    color: #fff;
+}
+
+#msg{
+    font-size: 20px;
+    color: red;
+    position: absolute;
+    transition: .3s;
+    animation: buttons .3s linear;
+    display: none;
+    font-weight: 600;
+}
+
+.bar{
+    background-color: #18191b;
+    display: block;
+    height: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    width: 80%;
+    box-shadow: 0px 15px 10px #00000044;
+}
+
+.bar span{
+    height: 15px;
+    float: left;
+    background-image: linear-gradient(135deg, rgb(223, 140, 32)0%, rgb(158, 206, 95)100%);
+    border-radius: 10px;
+}
+
+.css{
+    width: calc(90%);
+    animation: css 1s;
+}
+
+@keyframes css{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 90%;
+    }
+}
+
+.outer{
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    padding: 25px;
+    border: 1px solid red;
+}
+
+.inner{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#calprogress{
+    color: #fff;
+}
+
+circle{
+    fill: none;
+    stroke: #fff;
+    stroke-width: 20px;
+}
+
+.calcount{
+    background-color: #1E2129;
+    width: 90%;
+    height: 35%;
+    margin: 20px;
+    margin-top: 60px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 5px #0202029f;
+}
+
+.resultcontainer2{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.nutritioncontainer{
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    background-color: #1E2129;
+    width: 80%;
+    height: 90%;
+    position: relative;
+    margin: 20px;
+    margin-top: 20px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.resultcontainer1{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    height: 100%;
+}
+
+.nutrition{
+    background-color: #1E2129;
+    width: 80%;
+    height: 90%;
+    position: relative;
+    margin: 20px;
+    margin-top: 50px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    box-shadow: 2px 2px 5px #0202029f;
+}
+
+#nut{
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-family: 'Noto Sans HK', sans-serif;
+    font-weight: 80;
+    font-size: 2.2vh;
+    line-height: 1rem;
+}
+
+.ingredients{
+    background-color: #1E2129;
+    width: 90%;
+    height: fit-content;
+    padding-top: 40px;
+    padding-bottom: 50px;
+    position: relative;
+    margin: 20px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 5px #0202029f;
+}
+
+
+.res{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.dot{
+    height: 20px;
+    width: 20px;
+    transform: rotate(45deg);
+    background-color: #fff;
+    position: absolute;
+    left: -15px;
+}
+
+.recipecontainer{
+    height: 90vh;
+    width: 75vw;
+    background-color: #1E2129;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+#recipemain{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#recipenav{
+    position: fixed;
+    left: 0;
+}
+
+.prompt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75vw;
+    height: 20%;
+    flex-direction: column;
+    padding: 0;
+}
+
+.prompt input{
+    margin-top: 0;
+    width: 40vw;
+}
+
+.prompt form{
+    padding: 0;
+    margin: 5px;
+    display: flex;
+    gap: 1rem;
+}
+
+.prompt h1{
+    color: #fff;
+    margin-top: 45px;
+}
 
 
 
+#submitprompt{
+    height: 2.6rem;
+    width: 6.5rem;
+    border-radius: 30px;
+    border-style: none;
+    background-color: rgb(72, 173, 240);
+    font-weight: 400;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
 
+#submitprompt:hover{
+    background-color: rgb(27, 73, 104);
+    color: #fff;
+}
 
+#submitprompt:active{
+    background-color: rgb(14, 40, 58);
+}
 
+.recipetext{
+    border: 3px solid rgba(255, 255, 255, 0.363);
+    margin-top: 50px;
+    height: 100%;
+    border-radius: 40px;
+    padding: 30px;
+}
+
+#vita{
+    display: none;
+}
 
 
 
@@ -282,7 +708,7 @@ label{
     .container2{
         display: flex;
         flex-direction: column;
-        width: 400px;
+        width: 90vw;
     }
 
     .drop-down{
@@ -294,7 +720,64 @@ label{
         display: none;
     }
 
-    .titleRegister{
-        top: 30px;
+    #titleRegister{
+        top: 120px;
+        position: absolute;
     }
+
+    .frame{
+        flex-direction: column;
+        height: 200vh;
+        overflow-y: scroll;
+    }
+
+    .nav{
+        position: fixed;
+        bottom: 0;
+        width: 100vw;
+        height: 5rem;
+        z-index: 2;
+        flex-direction: row;
+    }
+
+    .nav svg{
+        height: 2em;
+        width: 2em;
+    }
+
+    .preference{
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    #personalize{
+        text-align: center;
+    }
+
+    .preference p{
+        text-align: center;
+    }
+
+    .nutrition{
+        margin-top: 20px;
+        margin-bottom: 8rem;
+        width: 90%;
+    }
+
+    .nutrition h3{
+        font-size: 1.4rem;
+    }
+    
+    .resultcontainer1{
+        justify-content: center;
+        align-items: center;
+    }
+
+    #vita{
+        display: flex;
+        color: #fff;
+        margin-bottom: -50px;
+        text-align: center;
+    }
+
 }
