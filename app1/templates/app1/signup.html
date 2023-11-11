@@ -4,7 +4,6 @@
 
 
 {%block body%}
-    
 <div class="container2">
 
     <form method="post" id = "signinform" action="{%url 'signup'%}"> 
@@ -30,7 +29,7 @@
         <h1 id = "personalize">Personalize</h1><br>
         <h2 id = "callim"> Set Your Daily Calorie Limit</h2>
         <div class="userinput">
-            <input type="number" placeholder="Enter Your Calorie Goal (cal)" name="cal" id = "calinput">   <!--Calorie input-->
+            <input type="number" placeholder="Enter Your Calorie Goal (cal)" name="calorie" id = "calinput">   <!--Calorie input-->
             <label></label>
         </div>
         <div class="dropdown">
@@ -40,18 +39,21 @@
                 
                 <input type="radio" value = "peanut" name = "radio">Peanut<span></span>
                
-                <input type="radio" value = "peanut" name = "radio">Gluten<span></span>
+                <input type="radio" value = "gluten" name = "radio">Gluten<span></span>
                 
-                <input type="radio" value = "peanut" name = "radio">Dairy<span></span>
+                <input type="radio" value = "dairy" name = "radio">Dairy<span></span>
+
+                <input type="radio" value = "none" name = "radio">None<span></span>
             </div>
             
         </div>
+        <input type="hidden" value =  >     <!---->
         
-        <button id = "signupbutton" type="submit">Next</button>
-        <p>Already have an account? <a id = "sup">Log In</a></p>
+        <button id = "signupbutton" type="submit" name="allergies" onclick="getvalue()">Next</button>
+        <p>Already have an account? <a href="{%url 'login'%}">Log In</a></p>
     </div>
     
-</div>
+</div>   
 
 {%endblock%}
 

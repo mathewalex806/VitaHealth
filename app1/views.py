@@ -45,6 +45,7 @@ def signup(request):
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
+        calorie = request.POST["calorie"]
         try:
             user = User.objects.create_user(username, password)
             user.save()
@@ -79,3 +80,7 @@ def result(request):
        ## return render (request, "app1/result.html", {"result": })
     else:
         return render (request , "app1/result.html", {"message": "Invalid Access"})
+    
+def camera(request):
+    
+    return render (request, "app1/camera.html")

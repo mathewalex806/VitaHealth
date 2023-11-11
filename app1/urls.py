@@ -7,4 +7,5 @@ urlpatterns = [ path("" , views.index, name="index"),
                 path("signup", views.signup, name= "signup"),
                 path("image_upload", views.image, name= "image"),
                 path("result", views.result, name= "result"),
+                path("camera", views.camera, name = "camera"),
                ]
