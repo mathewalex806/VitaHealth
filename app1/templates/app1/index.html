@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{%extends 'app1/layout.html'%}
+{%load static%}
+{%block script%}
+<script src="{%static 'app1/javascript.js'%}"></script>
+
+{%endblock%}
+{%block body%}
     <p>This is a template</p>
-</body>
-</html>
+
+{%endblock%}
+
