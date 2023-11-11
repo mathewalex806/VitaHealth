@@ -1,11 +1,14 @@
 {%extends 'app1/layout.html'%}
 {%load static%}
+
+
+
+{%block body%}
+    <h1>Hello world!</h1>
+
+{%endblock%}
+
 {%block script%}
 <script src="{%static 'app1/javascript.js'%}"></script>
 
 {%endblock%}
-{%block body%}
-    <p>This is a template</p>
-
-{%endblock%}
-
