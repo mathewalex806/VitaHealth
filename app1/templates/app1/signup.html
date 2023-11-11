@@ -21,7 +21,7 @@
         </div>
         
 
-   
+    
     <div class="ver">
         
     </div>
@@ -35,25 +35,16 @@
         <div class="dropdown">
             <h2 id = "allergy"> Mention allergies if any</h2>
 
-            <div class="allergies">
-                
-                <input type="radio" value = "peanut" name = "radio">Peanut<span></span>
-               
-                <input type="radio" value = "gluten" name = "radio">Gluten<span></span>
-                
-                <input type="radio" value = "dairy" name = "radio">Dairy<span></span>
-
-                <input type="radio" value = "none" name = "radio">None<span></span>
+            <div class="userinput">
+                <input type="text" placeholder="Peanut / Gluten / Seafood / Dairy / None" name="allergy">
+                <label></label>
             </div>
-            
         </div>
-        <input type="hidden" value =  >     <!---->
-        
-        <button id = "signupbutton" type="submit" name="allergies" onclick="getvalue()">Next</button>
-        <p>Already have an account? <a href="{%url 'login'%}">Log In</a></p>
+        <button id = "signupbutton" type="submit">Next</button>
+        <p>Already have an account? <a id = "sup" href="{%url 'login'%}">Log In</a></p>
     </div>
-    
-</div>   
+</form>
+</div>
 
 {%endblock%}
 

@@ -66,9 +66,11 @@ def signup(request):
         username = request.POST["username"]
         password = request.POST["password"]
         calorie = request.POST["calorie"]
+        allergy = request.POST["allergy"]
         try:
-            user = User.objects.create_user(username, password)
+            user = User.objects.create(username = username, password= password, calorie_count = calorie , allergies = allergy)
             user.save()
+            return render(request, "app1/login")
         except IntegrityError:
             return render(request, "app1/signup.html", {
                 "message": "Username already taken."
