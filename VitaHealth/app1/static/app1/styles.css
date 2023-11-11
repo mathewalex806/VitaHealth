@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+HK&family=Paytone+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap');
+
+
+body{
+    background-image: linear-gradient(to bottom,rgba(28,55,84), rgb(0,20,41));
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+#Vita{
+    color: #fff;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-family: 'Marcellus SC', serif;
+}
+
+#title{
+    color: #3f2c2c;
+    font-family: 'Noto Sans HK', sans-serif;
+    position: relative;
+}
+
+.container1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #ccb4b4;
+    height: 80vh;
+    width: 400px;
+    border-radius: px;
+    padding: 20px;
+}
+
+form{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-items: center;
+}
+
+.forminput{
+    border-radius: 5px;
+    margin: 10px;
+}
+
+input{
+    width: 95%;
+    padding: 0.7rem 2rem;
+    background-color: #f3f3f3;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+}
+
+form{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.userinput{
+    position: relative;
+    margin: 0.5rem 0;
+    width: 100%;
+}
+
+.userinput span{
+    position: absolute;
+    top: 10px;
+    left: 11px;
+    opacity: 0.8;
+}
+
+input:focus ~ label{
+    width: 90%;
+}
+
+label{
+    position: absolute;
+    left: 48%;
+    top: 100%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 2px;
+    background: var(--second-bg-color);
+    transition: 0.3s;
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 300px) {
+
+}
