@@ -14,7 +14,7 @@ import os
 
 
 
-llm=OpenAI(model_name="text-davinci-003", openai_api_key = "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")
+llm=OpenAI(model_name="text-davinci-003", openai_api_key = "sk-yHOgiFsMAUPoGdqA7yoNT3BlbkFJbANcXH0F9zcDsI")
 
 load_dotenv(find_dotenv())
 
