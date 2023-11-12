@@ -4,7 +4,22 @@
 
 
 {%block body%}
-    <h1>Index Page</h1>
+<div class="sbody">
+    <div class="navbar">
+        <h1 id="titlecard">VitaHealth</h1>
+        <a href="{%url 'login'%}"id ='getstarted'>Get Started</a>
+    </div>
+    <section id="home">
+        <div class="homecontent">
+            <div class="hometext" id = "text">
+                <h1>VitaHealth</h1><br><br>
+            <p> Your dedicated partner in achieving and maintaining optimal health and well-being. Our innovative health tracking app is designed to empower you on your wellness journey, providing a seamless and personalized experience to monitor and improve your physical health</p><br>
+            <a href="{%url 'login'%}" id="start">Start Now</a>
+            </div>
+        <img src="/static/man.png" alt="">
+        </div>
+        
+    </section>
 
 {%endblock%}
 

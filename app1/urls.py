@@ -9,5 +9,5 @@ urlpatterns = [ path("" , views.index, name="index"),
                 path("result", views.result, name= "result"),
                 path("camera", views.camera, name = "camera"),
                 path("recipe", views.recipe, name= "recipe"),
-                path("diet", views.diet, name = "diet")
+                path("diet", views.diet, name = "diet"),
                ]

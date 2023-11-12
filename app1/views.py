@@ -19,6 +19,7 @@ from PIL import Image as impill
 from collections import Counter
 import requests
 import json
+from django.contrib.auth.decorators import login_required
 
 torch.hub._validate_not_a_forked_repo=lambda a,b,c: True
 model  = torch.hub.load('ultralytics/yolov5','custom', path='best.pt',force_reload=False)
@@ -38,14 +39,14 @@ You are an world renowned chef . Give the recipe for a simple but tasty {food} "
     x= llm(prompt.format(food=food))
     
     return x
-def give_diet(total_cal,cal_now):
+def give_diet(total_cal):
     template="""
-You are an world renowned dietitian . I have a daily calory limit of of """ +total_cal+""" but i already ate {calory} calories . recommend a diet for rest of the day along with their calories """
+    You are an world renowned dietitian . I have a daily calory limit of of {calory}. recommend a diet for rest of the day along with their calories """
     prompt2 =PromptTemplate(
     input_variables=["calory"],
     template=template,
     )
-    x= llm(prompt2.format(calory=cal_now))
+    x= llm(prompt2.format(calory=total_cal))
     
     return x
 def image_converter(imgs):
@@ -74,7 +75,7 @@ def login_view(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("index"))
+            return render(request,'app1/dash.html',{'user':request.user.username,'calory':request.user.calorie_count})
         else:
             return render(request, "app1/login.html", {
                 "message": "Invalid username and/or password."
@@ -101,7 +102,7 @@ def signup(request):
         try:
             user = User.objects.create(username = username, password= password, calorie_count = calorie , allergies = allergy)
             user.save()
-            return render(request, "app1/login")
+            return render(request, "app1/login.html")
         except IntegrityError:
             return render(request, "app1/signup.html", {
                 "message": "Username already taken."
@@ -109,7 +110,7 @@ def signup(request):
         
     else:
         return render (request, "app1/signup.html")
-    
+@login_required(login_url='login')
 def image(request):
     if request.method == "POST":
         form = ImageForm(request.POST, request.FILES)
@@ -123,7 +124,7 @@ def image(request):
     return render (request, "app1/image_upload.html",  {'form': ImageForm()})
 
 
-
+@login_required(login_url='login')
 def result(request):
     if request.method == "POST":
         img_path = request.POST["img_path"]
@@ -137,18 +138,19 @@ def result(request):
         resp= requests.get(api_url, headers={'X-Api-Key': 'jUxgOQ6Uyyv3X7+hMthrnQ==HroM4odQgevPwzgg'})
         response=resp.json()
         if resp.status_code == requests.codes.ok:
-            return render (request, "app1/result.html", {"result": img_return,"cal":response[0]["calories"],"fat":response[0]["fat_total_g"], "serve":response[0]["serving_size_g"],"fat_sat":response[0]["fat_saturated_g"], "protein":response[0]["protein_g"], "sodium":response[0]["sodium_mg"],"pottas":response[0]["potassium_mg"],"chole":response[0]["cholesterol_mg"],"carbs":response[0]["carbohydrates_total_g"],"fibre":response[0]["fiber_g"],"sugar":response[0]["sugar_g"]})
+            return render (request, "app1/result.html", {"q":query,"result": img_return,"cal":response[0]["calories"],"fat":response[0]["fat_total_g"], "serve":response[0]["serving_size_g"],"fat_sat":response[0]["fat_saturated_g"], "protein":response[0]["protein_g"], "sodium":response[0]["sodium_mg"],"pottas":response[0]["potassium_mg"],"chole":response[0]["cholesterol_mg"],"carbs":response[0]["carbohydrates_total_g"],"fibre":response[0]["fiber_g"],"sugar":response[0]["sugar_g"]})
         else:
             return render (request , "app1/result.html", {"message": "Invalid Access"})
             
         
         
         
-    
+@login_required(login_url='login')  
 def camera(request):
     
     return render (request, "app1/camera.html")
 
+@login_required(login_url='login')
 def recipe(request):
     
     if request.method == "POST":
@@ -158,11 +160,12 @@ def recipe(request):
     else:
         return render (request, "app1/recipe.html")
 
-
+@login_required(login_url='login')
 def diet(request):
-    if request.method == "POST":
-        recipe_user = request.POST["recipe_input"]
-        recipe_ai = give_recipe(recipe_user)
-        return render (request, "app1/recipe.html", {"a":recipe_ai})
+    if request.method == "GET":
+        user= request.user
+        q = User.objects.get(id=user.id)
+        x = give_diet (str(q.calorie_count))
+        return render (request, "app1/diet.html", {"a":x})
     else:
-        return render (request, "app1/recipe.html")
+        return render (request, "app1/diet.html")

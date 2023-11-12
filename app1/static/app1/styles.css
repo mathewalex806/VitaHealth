@@ -233,6 +233,7 @@ label{
     display: flex;
     flex-direction: row;
     overflow-x: hidden;
+    justify-content: center;
 }
 
 .nav{
@@ -245,10 +246,18 @@ label{
     justify-content: center;
     gap: 5rem;
     border-radius: 0 40px 40px 0px;
-
+    position: fixed;
+    left: 0;
 }
 
-
+.pic{
+    width: 300px;
+    position: absolute;
+    height: 300px;
+    background-color: #ceb9b9;
+    border-radius: 50%;
+    top: -150px;
+}
 
 .nav svg{
     cursor: pointer;
@@ -287,15 +296,12 @@ label{
     width: 50%;
 }
 
-.calgoal span{
-    margin-bottom: 20px;
-}
 
 .calgoal{
     background-color: #1E2129;
-    width: 80%;
-    height: 40%;
-    position: relative;
+    width: 40%;
+    height: 60%;
+    position: absolute;
     margin: 20px;
     border-radius: 40px;
     display: flex;
@@ -303,16 +309,18 @@ label{
     justify-content: center;
     box-shadow: 2px 2px 5px #0202029f;
     flex-direction: column;
-    justify-content: space-evenly;
+
     padding: 20px;
+    bottom: 0;
 }
 
 .sbody{
-    background-image: linear-gradient(rrgba(0, 20, 41, 1),rgba(28, 55, 84, 0.86));
+    background-image: linear-gradient(to top rgba(0, 20, 41, 1),rgba(28, 55, 84, 0.86));
     display: flex;
-    height: 100vh;
-    width: 100%;
+    max-height: 100vh;
+    min-width: 100vw;
     flex-direction: column;
+    position: absolute;
 }
 
 .navbar{
@@ -325,25 +333,90 @@ label{
     align-items: center;
 }
 
-#titlecard{
-    font-family: 'Marcellus SC', serif;
-    margin-left: 20px;
-}
 
 .navitems{
     display: inline-flex;
-    justify-content: space-between;
-    padding: 0;
-    gap: 20vw;
-    font-size: 20px;
+    width: 60%;
+    gap: 2rem;
+    justify-content: space-around;
 }
 
-.navitems li{
+#titlecard{
+    font-family: 'Marcellus SC', serif;
+    margin-left: 20px;
+    font-size: 40px;
+}
+
+
+.navbar a{
     list-style: none;
     margin-top: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+}
+
+.homecontent{
+    display: flex;
+    flex-direction: row;
+    max-width: 100vw;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+
+.homecontent p{
+    color: #fff;
+    line-height: 2.5rem;
+    text-align: justify;
+    font-size: 19px;
+}
+
+.homecontent h1{
+    color: #fff;
+    font-family: 'Marcellus SC', serif;
+    font-size: 60px;
+}
+
+.homecontent img{
+    width: 40vw;
+    height: auto;
+    animation-name: updown;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    transition: all 0.7s;
+
+}
+
+@keyframes updown{
+    0%{
+        transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(-20px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+.hometext{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
 }
 
 #getstarted{
+    height: 40px;
+    width: 120px;
+    border-radius: 40px;
+    border-style: none;
+}
+
+#start{
     height: 40px;
     width: 120px;
     border-radius: 40px;
@@ -372,13 +445,26 @@ label{
 
 .calgoaltext{
     display: flex;
-    justify-content: space-evenly;
+    position: relative;
+    align-items: center;
     flex-direction: column;
     width: 80%;
     color: #fff;
     font-family: 'Noto Sans HK', sans-serif;
     font-size: 0.7rem;
     height: 100%;
+    top: 150px;
+}
+
+.pic{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pic svg{
+    position: relative;
+
 }
 
 .imgclass{
@@ -599,6 +685,13 @@ circle{
     box-shadow: 2px 2px 5px #0202029f;
 }
 
+section{
+    min-height: 100vh;
+    min-width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .res{
     display: flex;
@@ -745,6 +838,11 @@ circle{
         width: 2em;
     }
 
+    .cam{
+        width: 50px;
+        height: 50px;
+    }
+
     .preference{
         width: 100%;
         padding-left: 0px;
@@ -778,6 +876,45 @@ circle{
         color: #fff;
         margin-bottom: -50px;
         text-align: center;
+    }
+
+    .homecontent{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 100vw;
+        height: 100vh;
+        margin: 0;
+        overflow-y: hidden;
+    }
+
+    .hometext{
+        width: 80%;
+    }
+
+    #logoutbtn{
+        width: 50px;
+        height: 40px;
+        border-radius: 30px;
+        background-color: rgb(72, 173, 240);
+        text-decoration: none;
+        color: #000;
+    }
+
+    .homecontent img{
+        width: 70%;
+        height: auto;
+    }
+
+    .homecontent h1{
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .navitems,
+    #getstarted,
+    #titlecard{
+        display: none;
     }
 
 }
