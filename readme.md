@@ -40,17 +40,12 @@ Say goodbye to guesswork and hello to a smarter, more informed approach to nutri
 ## Images
 
 <p align="center">
-  <img src="https://imgur.com/a/ObSTOOT" alt="Index" width="1200">
-  <img src="https://imgur.com/a/UZ3gLSw" alt="Image Upload" width="1200">
+  <img src="https://i.imgur.com/xjTPKpx.png" alt="Index" width="1200">
+  <img src="https://i.imgur.com/vVvT8wc.png" alt="Image Upload" width="1200">
 </p>
 
 <!-- Second Row -->
 <p align="center">
-  <img src="https://imgur.com/a/5q6WAhE" alt="Result" width="1200">
-  <img src="https://imgur.com/a/B6gLfLq" alt="Recipe" width="1200">
+  <img src="https://i.imgur.com/yg7JX0f.png" alt="Result" width="1200">
+  <img src="https://i.imgur.com/gtKc1bq.png" alt="Recipe" width="1200">
 </p>
-
-
-
-
-
