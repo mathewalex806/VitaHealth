@@ -2,8 +2,8 @@
 <a name="readme-top"></a>
 <br />
 <div align="center">
-  <a href="https://i.imgur.com/lMXXOx3.jpeg">
-    <img src="https://i.imgur.com/lMXXOx3.jpeg" alt="Logo" width="250" height="80">
+  <a href="https://i.imgur.com/pBFc8c4.png">
+    <img src="https://i.imgur.com/pBFc8c4.png" alt="Logo" width="400" height="250">
   </a>
 
   <h3 align="center">VitaHealth: Your Culinary Wellness Companion 🌿🍽️</h3>
